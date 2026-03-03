@@ -1,5 +1,0 @@
-baseURL = 'https://techwerkers.nl/'
-languageCode = 'nl'
-title = 'Techwerkers'
-# Events are likely to have future timestamps
-buildFuture = true

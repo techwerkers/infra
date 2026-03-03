@@ -1,39 +1,74 @@
-# TWC The Netherlands
+# Techwerkers Infra
 
-[![Netlify Status][netlify_bagde]][netlify_url]
-[![Code style][code_style_badge]][code_style_url]
+This whole doc is intended for people with infra knowledge. Doing any
+operations in this doc is likely to require access to keepass. Access is
+generally restricted unless absolutely necessary.
 
-[![website][website_badge]][website_url]
-[![production][production_badge]][production_url]
-[![i18n-en][i18n_en_badge]][i18n_en_url]
-[![i18n-nl][i18n_nl_badge]][i18n_nl_url]
+## SSH Key
 
-> This repository is responsible for most content visible on the website [techwerkers.nl](https://techwerkers.nl). The site is made with a static site generator [Hugo](https://gohugo.io/).
+Key was generated as follows (in keepass)
 
-This repo uses large portions of the hugo theme [congo by jpanther](https://www.github.com/jpanther/congo)
+```sh
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_techwerkers -C k3s@techwerkers
+```
 
-## 🛠️ Installation
+The above ssh key is available in the keepass.
 
-Read the [installation guide](./docs/contributing.md) to get set up.
+It is generally recommended to write the `ssh_config` to your ssh config to
+make SSH'ing into the host easier.
 
-## 🤝 Contributing
+```sh
+cat ssh_config >> ~/.ssh/config
+```
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/techworkersco/twc-site-nl/issues). You can also take a look at the [contributing guide](./docs/contributing.md).
+> [!NOTE]
+> `./id_ed25519_techwerkers.pub` is in this repo for brevity.
 
-<!-- Links -->
+## Hetzner
 
-[code_style_badge]: https://img.shields.io/badge/code%20style-prettier-F7B93E?logo=Prettier
-[code_style_url]: /.prettierrc
-[netlify_bagde]: https://api.netlify.com/api/v1/badges/05f9fda5-6fd8-418d-9cee-67882c0f5dba/deploy-status
-[netlify_url]: https://app.netlify.com/sites/twc-site-nl/deploys
-[website_badge]: https://img.shields.io/badge/website-url-blue.svg
-[website_url]: https://techwerkers.nl/
-[production_badge]: https://img.shields.io/badge/production-url-blue.svg
-[production_url]: https://app.netlify.com/sites/twc-site-nl/deploys
+We are using Hetzner Cloud servers to host some small machines to run
+kubernetes (specifically k3s).
 
-<!-- i18n Links -->
+This is all managed in the `tf` subdirectory. Both `opentofu` and `terraform`
+can be used to manage the infra. See the README in that directory for more info.
 
-[i18n_en_badge]: https://img.shields.io/badge/i18n-en-orange.svg
-[i18n_en_url]: ./_i18n/en.yml
-[i18n_nl_badge]: https://img.shields.io/badge/i18n-nl-orange.svg
-[i18n_nl_url]: ./_i18n/nl.yml
+**Agents:**
+
+We don't have any [yet], however past attempts have worked with the following:
+
+Cloud init: `cloudinit/k3s-agent.yaml`
+
+- Location: Nuremberg
+- Image: Debian 13
+- Type: Shared vCPU
+  - Arch: x86 (Intel/AMD)
+  - CX22
+- Networking:
+  - Public IPv4: None
+  - Public IPv6: None
+  - Private networks: vpc
+- SSH Keys:
+  - k3s@techwerkers
+- Backups: true
+- Cloud Init: contents of `k3s-agent.cloudinit.yaml`
+- Name: k3s-agent-[number]
+
+Command:
+
+```sh
+hcloud server create \
+  --datacenter nbg1-dc3 \
+  --type cx22 \
+  --image debian-13 \
+  --network vpc \
+  --ssh-key "k3s@techwerkers" \
+  --without-ipv4 \
+  --without-ipv6 \
+  --user-data-from-file cloudinit/k3s-agent.yaml \
+  --name k3s-agent-[number]
+```
+
+## Kubernetes Manifests
+
+A number of kubernetes manifests are provided in the `manifests` directory
+All information in the `manifests` directory. A readme is avaialble there.
