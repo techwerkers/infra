@@ -1,0 +1,39 @@
+{
+  "ban": 50,
+  "events": {
+    "im.ponies.room_emotes": 50,
+    "im.vector.modular.widgets": 50,
+    "in.cinny.room.power_level_tags": 100,
+    "m.poll.response": 0,
+    "m.reaction": 0,
+    "m.room.avatar": 50,
+    "m.room.canonical_alias": 50,
+    "m.room.encryption": 100,
+    "m.room.history_visibility": 100,
+    "m.room.join_rules": 50,
+    "m.room.message": 0,
+    "m.room.name": 50,
+    "m.room.pinned_events": 50,
+    "m.room.power_levels": 100,
+    "m.room.redaction": 0,
+    "m.room.server_acl": 100,
+    "m.room.tombstone": 100,
+    "m.room.topic": 50,
+    "m.sticker": 0,
+    "org.matrix.msc3381.poll.response": 0
+  },
+  "events_default": 0,
+  "historical": 0,
+  "invite": 99,
+  "kick": 50,
+  "notifications": {
+    "room": 50
+  },
+  "redact": 50,
+  "state_default": 50,
+  "users": {
+    "@admin:chat.techwerkers.nl": 100,
+    "@discordbot:chat.techwerkers.nl": 99
+  },
+  "users_default": 0
+}
