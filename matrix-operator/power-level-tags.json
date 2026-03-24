@@ -7,12 +7,16 @@
     "color": "#1fd81f",
     "name": "Moderator"
   },
-  "99": {
+  "98": {
     "name": "Bridges",
     "color": "#ff0000"
   },
+  "99": {
+     "name": "Admin",
+    "color": "#3333dd"
+  },
   "100": {
     "color": "#0088ff",
-    "name": "Admin"
+    "name": "Server Admin"
   }
 }

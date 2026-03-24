@@ -24,7 +24,7 @@
   },
   "events_default": 0,
   "historical": 0,
-  "invite": 99,
+  "invite": 98,
   "kick": 50,
   "notifications": {
     "room": 50
@@ -33,7 +33,8 @@
   "state_default": 50,
   "users": {
     "@admin:chat.techwerkers.nl": 100,
-    "@discordbot:chat.techwerkers.nl": 99
+    "@b-n:chat.techwerkers.nl": 99,
+    "@discordbot:chat.techwerkers.nl": 98
   },
   "users_default": 0
 }
