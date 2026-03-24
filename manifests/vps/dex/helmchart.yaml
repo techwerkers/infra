@@ -16,3 +16,5 @@ spec:
     configSecret:
       create: false
       name: dex-config
+    image:
+      tag: v2.45.1

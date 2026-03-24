@@ -7,4 +7,3 @@ data:
   DATABASE_URL: "file://app/prisma/excalidash.db"
   NODE_ENV: "production"
   FRONTEND_URL: "https://excalidash.techwerkers.nl/"
-

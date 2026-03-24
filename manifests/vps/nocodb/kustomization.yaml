@@ -6,7 +6,7 @@ namespace: nocodb
 
 images:
 - name: nocodb/nocodb
-  newTag: 0.265.1
+  newTag: 0.301.5
 - name: redis
   newTag: 8.2-alpine
 - name: postgres
