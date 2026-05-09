@@ -6,9 +6,9 @@ namespace: docmost
 
 images:
 - name: docmost/docmost
-  newTag: 0.70.3
+  newTag: 0.80.2
 - name: redis
-  newTag: 8.2-alpine
+  newTag: 8.6-alpine
 - name: postgres
   newTag: 17-alpine 
 - name: quay.io/b-3-n/postgres-backup
