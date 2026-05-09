@@ -6,9 +6,9 @@ namespace: excalidash
 
 images:
 - name: zimengxiong/excalidash-frontend
-  newTag: 0.4.28
+  newTag: 0.5.0
 - name: zimengxiong/excalidash-backend
-  newTag: 0.4.28
+  newTag: 0.5.0
 
 
 resources:
