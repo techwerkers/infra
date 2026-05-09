@@ -6,9 +6,9 @@ namespace: nocodb
 
 images:
 - name: nocodb/nocodb
-  newTag: 0.301.5
+  newTag: 2026.05.0
 - name: redis
-  newTag: 8.2-alpine
+  newTag: 8.6-alpine
 - name: postgres
   newTag: 17-alpine 
 - name: quay.io/b-3-n/postgres-backup
