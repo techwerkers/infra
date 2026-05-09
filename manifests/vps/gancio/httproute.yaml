@@ -6,6 +6,7 @@ metadata:
 spec:
   parentRefs:
   - name: gancio
+    sectionName: websecure
   hostnames:
   - events.techwerkers.nl
   rules:
