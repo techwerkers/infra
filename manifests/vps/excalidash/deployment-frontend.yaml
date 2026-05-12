@@ -24,3 +24,8 @@ spec:
         ports:
         - containerPort: 80
           name: http
+        resources:
+          requests:
+            memory: 16Mi
+          limits:
+            memory: 16Mi

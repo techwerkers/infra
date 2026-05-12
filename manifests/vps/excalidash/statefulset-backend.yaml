@@ -27,6 +27,11 @@ spec:
         volumeMounts:
         - mountPath: /app/prisma
           name: excalidash-data
+        resources:
+          requests:
+            memory: 64Mi
+          limits:
+            memory: 64Mi
   volumeClaimTemplates:
   - metadata:
       name: excalidash-data

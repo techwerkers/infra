@@ -17,7 +17,12 @@ spec:
     spec:
       containers:
       - name: redis
-        image: redis:latest  # Overridden
+        image: redis:REPLACEME
         ports:
         - containerPort: 6379
           name: redis
+        resources:
+          requests:
+            memory: 32Mi
+          limits:
+            memory: 32Mi

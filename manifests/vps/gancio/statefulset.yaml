@@ -38,6 +38,11 @@ spec:
         - mountPath: /home/node/gancio_plugins/gancio-plugin-discord-bridge/index.js
           subPath: index.js
           name: gancio-discord-plugin-patches
+        resources:
+          requests:
+            memory: 512Mi
+          limits:
+            memory: 512Mi
       volumes:
       - name: gancio-config
         configMap:

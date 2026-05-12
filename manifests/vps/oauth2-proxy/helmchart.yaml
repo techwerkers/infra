@@ -51,3 +51,8 @@ spec:
         standard_logging = true
 
     replicaCount: 1
+    resources:
+      requests:
+        memory: 32Mi
+      limits:
+        memory: 32Mi

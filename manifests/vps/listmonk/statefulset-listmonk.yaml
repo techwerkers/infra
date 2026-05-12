@@ -35,6 +35,11 @@ spec:
         volumeMounts:
         - mountPath: /listmonk/uploads
           name: listmonk-data
+        resources:
+          requests:
+            memory: 128Mi
+          limits:
+            memory: 128Mi
   volumeClaimTemplates:
   - metadata:
       name: listmonk-data

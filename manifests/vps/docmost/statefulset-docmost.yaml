@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: docmost
-        image: docmost/docmost:latest  # Overridden
+        image: docmost/docmost:REPLACEME
         envFrom:
         - configMapRef:
             name: docmost-docmost
@@ -27,6 +27,11 @@ spec:
         volumeMounts:
         - mountPath: /app/data/storage
           name: docmost-data
+        resources:
+          requests:
+            memory: 512Mi
+          limits:
+            memory: 512Mi
   volumeClaimTemplates:
   - metadata:
       name: docmost-data

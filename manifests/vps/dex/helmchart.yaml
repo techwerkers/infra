@@ -18,3 +18,8 @@ spec:
       name: dex-config
     image:
       tag: v2.45.1
+    resources:
+      requests:
+        memory: 32Mi
+      limits:
+        memory: 32Mi

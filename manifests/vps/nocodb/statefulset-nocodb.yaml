@@ -27,6 +27,11 @@ spec:
         volumeMounts:
         - mountPath: /usr/app/data
           name: nocodb-data
+        resources:
+          requests:
+            memory: 768Mi
+          limits:
+            memory: 768Mi
   volumeClaimTemplates:
   - metadata:
       name: nocodb-data
