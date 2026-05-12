@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak-env
+data:
+  ## Cache
+  KC_CACHE: ispn
+  #KC_CACHE_EMBEDDED_NETWORK_BIND_ADDRESS: '$(POD_IP)'
+  ## DB
+  KC_DB: postgres
+  KC_DB_URL_DATABASE: keycloak
+  KC_DB_URL_HOST: keycloak-postgres.keycloak.svc.cluster.local.
+  KC_DB_USERNAME: keycloak
+  ## Hostname v2
+  # TLS is done at the gateway, we only host id.techwerkers.nl
+  KC_HOSTNAME: "https://id.techwerkers.nl"
+  # Set to false if doing local port-forwarding
+  KC_HOSTNAME_STRICT: "true"
+  KC_HOSTNAME_BACKCHANNEL_DYNAMIC: "true"
+  ## HTTP(S)
+  KC_HTTP_ENABLED: "true"
+  KC_HTTP_HOST: "0.0.0.0"
+  KC_HTTP_PORT: "8080"
+  ## Health
+  KC_HEALTH_ENABLED: "true"
+  ## Management
+  KC_MANAGEMENT_HEALTH_ENABLED: "true"
+  KC_MANAGEMENT_PORT: "9000"
+  ## Metrics
+  KC_METRICS_ENABLED: "true"
+  ## Proxy
+  KC_PROXY_HEADERS: xforwarded
+  ## Logging
+  KC_LOG_LEVEL: info
+  ## Bootstrap Admin
+  # Disabled after bootstrapping
+  #KC_BOOTSTRAP_ADMIN_USERNAME: admin
+  #KC_BOOTSTRAP_ADMIN_PASSWORD: techwerkers

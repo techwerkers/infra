@@ -1,0 +1,19 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: keycloak-public
+spec:
+  parentRefs:
+  - name: keycloak
+  hostnames:
+  - id.techwerkers.nl
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: keycloak-web
+      port: 8080
+      weight: 1

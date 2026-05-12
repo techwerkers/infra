@@ -9,6 +9,7 @@ resources:
 - excalidash
 - gancio
 - infra
+- keycloak
 - listmonk
 - nocodb
 - oauth2-proxy

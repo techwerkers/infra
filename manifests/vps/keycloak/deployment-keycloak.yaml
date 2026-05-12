@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+  labels:
+    app: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+      - name: keycloak
+        image: quay.io/keycloak/keycloak:REPLACEME
+        args: ["start"]
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: KC_CACHE_EMBEDDED_NETWORK_BIND_ADDRESS
+          value: '$(POD_IP)'
+        envFrom:
+        - configMapRef:
+            name: keycloak-env
+        - secretRef:
+            name: keycloak-env
+        ports:
+        - name: http
+          containerPort: 8080
+        - name: jgroups
+          containerPort: 7800
+        - name: management
+          containerPort: 9000
+        - name: jgroups-fd
+          containerPort: 57800
+        startupProbe:
+          httpGet:
+            path: /health/started
+            port: 9000
+          periodSeconds: 1
+          failureThreshold: 600              
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: 9000
+          periodSeconds: 10
+          failureThreshold: 3              
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: 9000
+          periodSeconds: 10
+          failureThreshold: 3              
+        resources:
+          limits:
+            memory: 768Mi
+          requests:
+            memory: 768Mi
