@@ -5,19 +5,5 @@ kind: Kustomization
 resources:
 - https://github.com/rancher/system-upgrade-controller/releases/latest/download/crd.yaml
 - https://github.com/rancher/system-upgrade-controller/releases/latest/download/system-upgrade-controller.yaml
-- https://github.com/hetznercloud/csi-driver//deploy/kubernetes/?ref=v2.17.0
 - helmchartconfig-traefik.yaml
 - plan-upgrade-control-plane.yaml
-
-generators:
-- |-
-  apiVersion: viaduct.ai/v1
-  kind: ksops
-  metadata:
-    name: infra-ksops
-    annotations:
-      config.kubernetes.io/function: |
-        exec:
-          path: ksops
-  files:
-  - ./secret-hcloud.enc.yaml
