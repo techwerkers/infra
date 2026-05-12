@@ -5,3 +5,12 @@ Host k3s-server-01
   User k3s-admin
   PreferredAuthentications publickey
   PasswordAuthentication no
+
+Host k3s-agent-01
+  HostName 10.0.0.3
+  Port 22
+  IdentityFile ~/.ssh/id_ed25519_techwerkers
+  User k3s-admin
+  PreferredAuthentications publickey
+  PasswordAuthentication no
+  ProxyJump k3s-server-01

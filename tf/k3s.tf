@@ -43,3 +43,43 @@ resource "hcloud_server" "k3s-server-01" {
   #  hcloud_ssh_key.k3s_techwerkers.id
   # ]
 }
+
+resource "hcloud_server" "k3s-agent-01" {
+  name = "k3s-agent-01"
+
+  delete_protection  = true
+  rebuild_protection = true
+
+  image = "debian-13"
+
+  server_type = "cx23"
+  datacenter  = "nbg1-dc3"
+  backups     = true
+  keep_disk   = true
+
+  public_net {
+    ipv4         = 0
+    ipv4_enabled = false
+    ipv6         = 0
+    ipv6_enabled = false
+  }
+
+  network {
+    network_id = hcloud_network.vpc.id
+    ip         = "10.0.0.3"
+  }
+
+  firewall_ids = [
+    hcloud_firewall.http_traffic.id,
+    hcloud_firewall.ssh.id,
+    hcloud_firewall.k3s_api.id
+  ]
+  ignore_remote_firewall_ids = false
+
+  # WARN: the cloudinit file needs editing
+  # WARN: These trigger resource recreation - e.g. server go bang
+  # user_data = file("../cloudinit/k3s-agent.yaml")
+  ssh_keys = [
+    hcloud_ssh_key.k3s_techwerkers.id
+  ]
+}
