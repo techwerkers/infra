@@ -66,8 +66,10 @@ spec:
         - mountPath: /opt/keycloak/providers/keycloak-altcha-jar-with-dependencies.jar
           name: altcha-plugin
           subPath: keycloak-altcha-jar-with-dependencies.jar
+        - mountPath: /opt/keycloak/providers/keycloak-rbac-provider.jar
+          name: altcha-plugin
+          subPath: keycloak-rbac-provider.jar
       volumes:
       - name: altcha-plugin
         configMap:
           name: altcha-plugin
-        

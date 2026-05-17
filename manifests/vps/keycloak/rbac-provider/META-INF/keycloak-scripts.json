@@ -1,0 +1,12 @@
+{
+  "authenticators": [
+    {
+      "name": "RBAC checker (Custom JS)",
+      "fileName": "rbac-auth.js",
+      "description": "A custom JS authenticator that checks for the `access` role under a client"
+    }
+  ],
+  "policies": [],
+  "mappers": [],
+  "saml-mappers": []
+}

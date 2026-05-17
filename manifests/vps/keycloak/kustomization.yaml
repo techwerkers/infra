@@ -30,6 +30,7 @@ configMapGenerator:
 - name: altcha-plugin
   files:
   - keycloak-altcha-jar-with-dependencies.jar  
+  - keycloak-rbac-provider.jar
 
 generators:
 - |-
