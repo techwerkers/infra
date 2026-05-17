@@ -13,8 +13,8 @@ images:
 resources:
 # Dependencies: infra
 - gateway.yaml
-- httproute.yaml
 - httproute-http.yaml
+- httproute-https.yaml
 - certificate.yaml
 # Dependencies: postgres
 - configmap-postgres.yaml
