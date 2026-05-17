@@ -6,6 +6,9 @@ data:
   ## Cache
   KC_CACHE: ispn
   #KC_CACHE_EMBEDDED_NETWORK_BIND_ADDRESS: '$(POD_IP)'
+  ## Feature
+  # Enable JS preview feature for the sake of authz via groups
+  KC_FEATURE_SCRIPTS: v1
   ## DB
   KC_DB: postgres
   KC_DB_URL_DATABASE: keycloak
