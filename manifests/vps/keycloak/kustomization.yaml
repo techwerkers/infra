@@ -26,6 +26,11 @@ resources:
 - service-keycloak-discovery.yaml
 - service-keycloak-web.yaml
 
+configMapGenerator:
+- name: altcha-plugin
+  files:
+  - keycloak-altcha-jar-with-dependencies.jar  
+
 generators:
 - |-
   apiVersion: viaduct.ai/v1

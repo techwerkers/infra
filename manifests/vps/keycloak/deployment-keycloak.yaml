@@ -62,3 +62,12 @@ spec:
             memory: 768Mi
           requests:
             memory: 768Mi
+        volumeMounts:
+        - mountPath: /opt/keycloak/providers/keycloak-altcha-jar-with-dependencies.jar
+          name: altcha-plugin
+          subPath: keycloak-altcha-jar-with-dependencies.jar
+      volumes:
+      - name: altcha-plugin
+        configMap:
+          name: altcha-plugin
+        
