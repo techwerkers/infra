@@ -7,18 +7,19 @@ metadata:
 spec:
   repo: https://oauth2-proxy.github.io/manifests
   chart: oauth2-proxy
-  version: 10.4.3
+  version: 10.6.0
   targetNamespace: oauth2-proxy
   createNamespace: true
   valuesContent: |-
     config:
-      existingSecret: oauth2-proxy-dex
+      existingSecret: oauth2-proxy-keycloak
       configFile: |-
         # OIDC Settings
-        provider = "oidc"
-        provider_display_name = "Dex"
-        oidc_issuer_url = "https://dex.techwerkers.nl"
+        provider = "keycloak-oidc"
+        # provider_display_name = "Keycloak"
+        oidc_issuer_url = "https://id.techwerkers.nl/realms/techwerkers"
         email_domains = [ "*" ]
+        code_challenge_method = "S256"
 
         # Proxy Settings
         reverse_proxy = true
@@ -51,6 +52,7 @@ spec:
         standard_logging = true
 
     replicaCount: 1
+
     resources:
       requests:
         memory: 32Mi

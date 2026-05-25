@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: observability
+  namespace: observability
+spec:
+  secretName: observability-tls
+  dnsNames:
+  - "prometheus.infra.techwerkers.nl"
+  - "grafana.infra.techwerkers.nl"
+  issuerRef:
+    name: acme
+    kind: ClusterIssuer

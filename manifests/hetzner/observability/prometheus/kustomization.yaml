@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: observability
+
+resources:
+- ../../ext/middlewares
+# Prometheus
+- serviceaccount-prometheus.yaml
+- clusterrole-prometheus.yaml
+- clusterrolebinding-prometheus.yaml
+- prometheus.yaml
+- httproute-prometheus.yaml
+
+generators:
+- |-
+  apiVersion: viaduct.ai/v1
+  kind: ksops
+  metadata:
+    name: observability-prometheus
+    annotations:
+      config.kubernetes.io/function: |
+        exec:
+          path: ksops
+  files:
+  - secret-prom-scrape-configs.enc.yaml

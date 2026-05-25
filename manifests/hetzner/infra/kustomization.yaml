@@ -8,3 +8,4 @@ resources:
 - helmchartconfig-traefik.yaml
 - plan-upgrade-control-plane.yaml
 - prometheus-operator/
+- servicemonitor-coredns.yaml

@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: coredns
+  namespace: kube-system
+  labels:
+    prometheus: scrape
+spec:
+  jobLabel: coredns
+  endpoints:
+  - port: "metrics"
+  selector:
+    matchLabels:
+      k8s-app: kube-dns

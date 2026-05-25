@@ -1,0 +1,30 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: observability
+  namespace: observability
+spec:
+  gatewayClassName: traefik
+  listeners:
+  - name: websecure-prometheus
+    port: 8443
+    protocol: HTTPS
+    hostname: prometheus.infra.techwerkers.nl
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - group: ""
+        kind: Secret
+        name: observability-tls
+        namespace: observability
+  - name: websecure-grafana
+    port: 8443
+    protocol: HTTPS
+    hostname: grafana.infra.techwerkers.nl
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - group: ""
+        kind: Secret
+        name: observability-tls
+        namespace: observability

@@ -1,20 +1,21 @@
----
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+namespace: observability
+
 resources:
-- referencegrant-oauth2-proxy.yaml
-- helmchart.yaml
+- helmchart-grafana.yaml
+- httproute-grafana.yaml
 
 generators:
 - |-
   apiVersion: viaduct.ai/v1
   kind: ksops
   metadata:
-    name: oauth2-proxy
+    name: observability-grafana
     annotations:
       config.kubernetes.io/function: |
         exec:
           path: ksops
   files:
-  - ./secret-oauth-proxy-keycloak.enc.yaml
+  - secret-grafana-env.enc.yaml
