@@ -5,7 +5,9 @@ metadata:
   name: docmost
 spec:
   parentRefs:
-  - name: docmost
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: docmost
   hostnames:
   - docmost.techwerkers.nl
   rules:
@@ -14,6 +16,8 @@ spec:
         type: PathPrefix
         value: /
     backendRefs:
-      - name: docmost-docmost
+      - group: ""
+        kind: Service
+        name: docmost-docmost
         port: 3000
         weight: 1

@@ -13,5 +13,7 @@ spec:
     tls:
       mode: Terminate
       certificateRefs:
-      - name: docmost-tls
+      - group: ""
+        kind: Secret
+        name: docmost-tls
         namespace: docmost
