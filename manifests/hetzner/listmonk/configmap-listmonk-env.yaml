@@ -4,6 +4,7 @@ metadata:
   name: listmonk-listmonk-env
 data:
   LISTMONK_app__address: "0.0.0.0:9000"
+  LISTMONK_app__root_url: "https://listmonk.techwerkers.nl"
   LISTMONK_db__user: listmonk
   # LISTMONK_db__password: "" set in the secret
   LISTMONK_db__database: listmonk

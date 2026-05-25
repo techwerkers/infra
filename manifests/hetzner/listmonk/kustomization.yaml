@@ -16,6 +16,7 @@ resources:
 - certificate.yaml
 - gateway.yaml
 - httproute.yaml
+- httproute-http.yaml
 # Dependencies (Postgres, redis)
 - configmap-postgres.yaml
 - service-postgres.yaml
