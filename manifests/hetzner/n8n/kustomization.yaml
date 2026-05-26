@@ -1,0 +1,40 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: n8n
+
+images:
+- name: n8nio/n8n
+  newTag: 2.21.7
+- name: postgres
+  newTag: 18-alpine 
+
+resources:
+# Dependencies: infra
+- gateway.yaml
+- httproute.yaml
+- certificate.yaml
+# Dependencies: postgres
+- configmap-postgres.yaml
+- statefulset-postgres.yaml
+- service-postgres.yaml
+# Main deployment
+- configmap-n8n-env.yaml
+- deployment-n8n.yaml
+- service-n8n.yaml
+- pvc-n8n.yaml
+
+generators:
+- |-
+  apiVersion: viaduct.ai/v1
+  kind: ksops
+  metadata:
+    name: n8n
+    annotations:
+      config.kubernetes.io/function: |
+        exec:
+          path: ksops
+  files:
+  - secret-postgres.enc.yaml
+  - secret-n8n-env.enc.yaml
