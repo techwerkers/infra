@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: espocrm-espocrm
+  labels:
+    app: espocrm-espocrm
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: espocrm-espocrm
+  template:
+    metadata:
+      labels:
+        app: espocrm-espocrm
+    spec:
+      containers:
+      - name: espocrm
+        image: espocrm/espocrm:latest  # Overridden
+        envFrom:
+        - configMapRef:
+            name: espocrm-espocrm-env
+        - secretRef:
+            name: espocrm-env
+        ports:
+        - name: http
+          containerPort: 80
+        resources:
+          limits:
+            memory: 256Mi
+          requests:
+            memory: 256Mi
+        volumeMounts:
+        - name: espocrm-www
+          mountPath: /var/www/html
+      volumes:
+      - name: espocrm-www
+        persistentVolumeClaim:
+          claimName: espocrm-www

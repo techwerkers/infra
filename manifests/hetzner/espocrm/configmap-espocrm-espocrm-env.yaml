@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: espocrm-espocrm-env
+data:
+  ## Set once according to espocrm docs
+  ESPOCRM_DATABASE_PLATFORM: Postgresql
+  ESPOCRM_DATABASE_HOST: espocrm-postgres.espocrm.svc.cluster.local
+  ESPOCRM_DATABASE_PORT: "5432"
+  ESPOCRM_DATABASE_NAME: espocrm
+  ESPOCRM_DATABASE_USER: espocrm
+  ESPOCRM_ADMIN_USERNAME: admin
+  ESPOCRM_SITE_URL: "https://crm.techwerkers.nl"
+  ## Applied everytime
+  # General
+  ESPOCRM_CONFIG_USE_CACHE: "true"
+  ESPOCRM_CONFIG_MAINTENANCEM_MODE: "false"
+  # UI
+  ESPOCRM_CONFIG_APPLICATION_DESCRIPTION: "Techwerkers CRM"

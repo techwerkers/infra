@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: espocrm-postgres
+spec:
+  selector:
+    matchLabels:
+      app: espocrm-postgres
+  serviceName: espocrm-postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: espocrm-postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:latest  # Overridden
+        envFrom:
+        - configMapRef:
+            name: espocrm-postgres
+        - secretRef:
+            name: espocrm-postgres
+        ports:
+        - containerPort: 5432
+          name: pgport
+        volumeMounts:
+        - mountPath: /var/lib/postgresql
+          name: postgres-data
+        resources:
+          requests:
+            memory: 256Mi
+          limits:
+            memory: 256Mi
+  volumeClaimTemplates:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: postgres-data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: local-path
+      resources:
+        requests:
+          storage: 1Gi

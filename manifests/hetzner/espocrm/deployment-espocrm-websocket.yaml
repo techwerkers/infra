@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: espocrm-websocket
+  labels:
+    app: espocrm-websocket
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: espocrm-websocket
+  template:
+    metadata:
+      labels:
+        app: espocrm-websocket
+    spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - espocrm-espocrm
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: espocrm
+        image: espocrm/espocrm:latest  # Overridden
+        command:
+        - sh
+        - -c
+        - /usr/local/bin/docker-websocket.sh
+        envFrom:
+        - configMapRef:
+            name: espocrm-websocket-env
+        - secretRef:
+            name: espocrm-env
+        ports:
+        - name: http
+          containerPort: 80
+        resources:
+          limits:
+            memory: 128Mi
+          requests:
+            memory: 128Mi
+        volumeMounts:
+        - name: espocrm-www
+          mountPath: /var/www/html
+      volumes:
+      - name: espocrm-www
+        persistentVolumeClaim:
+          claimName: espocrm-www

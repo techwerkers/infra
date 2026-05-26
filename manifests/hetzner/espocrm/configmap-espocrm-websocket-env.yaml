@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: espocrm-websocket-env
+data:
+  ESPOCRM_CONFIG_USE_WEB_SOCKET: "true"
+  # ESPOCRM_CONFIG_WEB_SOCKET_URL: "ws://localhost:8081"
+  ESPOCRM_CONFIG_WEB_SOCKET_ZERO_M_Q_SUBSCRIBER_DSN: "tcp://*:7777"
+  ESPOCRM_CONFIG_WEB_SOCKET_ZERO_M_Q_SUBMISSION_DSN: "tcp://espocrm-websocket.espocrm.svc.cluster.local.:7777"

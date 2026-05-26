@@ -1,0 +1,46 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: espocrm
+
+images:
+- name: espocrm/espocrm 
+  newTag: 9.3.7-apache
+- name: postgres
+  newTag: 18-alpine 
+
+resources:
+# Dependencies: infra
+- ns.yaml
+- gateway.yaml
+- httproute.yaml
+- certificate.yaml
+# Dependencies: postgres
+- configmap-postgres.yaml
+- statefulset-postgres.yaml
+- service-postgres.yaml
+# Main deployment
+- configmap-espocrm-daemon-env.yaml
+- configmap-espocrm-espocrm-env.yaml
+- configmap-espocrm-websocket-env.yaml
+- deployment-espocrm-daemon.yaml
+- deployment-espocrm-espocrm.yaml
+- deployment-espocrm-websocket.yaml
+- service-espocrm-espocrm.yaml
+- service-espocrm-websocket.yaml
+- pvc-espocrm.yaml
+
+generators:
+- |-
+  apiVersion: viaduct.ai/v1
+  kind: ksops
+  metadata:
+    name: n8n
+    annotations:
+      config.kubernetes.io/function: |
+        exec:
+          path: ksops
+  files:
+  - secret-postgres.enc.yaml
+  - secret-espocrm-env.enc.yaml
