@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: node-exporter
+  labels:
+    prometheus: scrape
+spec:
+  jobLabel: node-exporter
+  podMetricsEndpoints:
+  - port: metrics
+    path: /metrics
+    scheme: http
+    metricRelabelings:
+    - targetLabel: cluster
+      replacement: hetzner-01
+      action: replace
+    honorLabels: true
+  selector:
+    matchLabels:
+      app: node-exporter

@@ -44,7 +44,7 @@ spec:
 
     # only exposed via port-forward
     api:
-      dashboard: true
+      dashboard: false
       insecure: true
 
     logs:
@@ -53,8 +53,16 @@ spec:
       access:
         enabled: true
 
+    service:
+      spec:
+        externalTrafficPolicy: Local
+
     resources:
       requests:
         memory: 128Mi
       limits:
         memory: 128Mi
+
+    nodeSelector:
+      "node-role.kubernetes.io/master": "true"
+
