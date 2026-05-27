@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: espocrm
+spec:
+  secretName: espocrm-tls
+  dnsNames:
+  - "crm.techwerkers.nl"
+  issuerRef:
+    name: acme
+    kind: ClusterIssuer

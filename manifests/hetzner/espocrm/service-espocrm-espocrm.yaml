@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: espocrm-espocrm
+  labels:
+    app: espocrm-espocrm
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: http
+      name: http
+  selector:
+    app: espocrm-espocrm
+  type: ClusterIP

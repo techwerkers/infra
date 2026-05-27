@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: espocrm-postgres
+data:
+  POSTGRES_DB: espocrm
+  POSTGRES_USER: espocrm
