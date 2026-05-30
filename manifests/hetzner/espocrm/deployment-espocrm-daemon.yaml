@@ -40,7 +40,7 @@ spec:
             name: espocrm-env
         resources:
           limits:
-            memory: 128Mi
+            memory: 384Mi
           requests:
             memory: 128Mi
         volumeMounts:
