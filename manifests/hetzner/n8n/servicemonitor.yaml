@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: n8n
+  labels:
+    prometheus: scrape
+spec:
+  jobLabel: n8n
+  endpoints:
+  - port: http
+    metricRelabelings:
+    - targetLabel: cluster
+      replacement: hetzner-01
+      action: replace
+    honorLabels: true
+  selector:
+    matchLabels:
+      app: n8n

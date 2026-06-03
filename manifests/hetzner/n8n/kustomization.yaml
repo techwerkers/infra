@@ -24,6 +24,7 @@ resources:
 - deployment-n8n.yaml
 - service-n8n.yaml
 - pvc-n8n.yaml
+- servicemonitor.yaml
 
 generators:
 - |-
