@@ -6,6 +6,7 @@ metadata:
 spec:
   parentRefs:
   - name: listmonk
+    sectionName: websecure
   hostnames:
   - listmonk.techwerkers.nl
   rules:
