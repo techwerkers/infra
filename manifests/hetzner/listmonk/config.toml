@@ -1,0 +1,17 @@
+[app]
+address = "0.0.0.0:9000"
+# Note: The value in the settings table is more likely to be used than this
+root_url = "https://listmonk.techwerkers.nl"
+
+[db]
+host = "listmonk-postgres.listmonk.svc.cluster.local."
+port = 5432
+user = "listmonk"
+database = "listmonk"
+
+ssl_mode = "disable"
+max_open = 25
+max_idle = 25
+max_lifetime = "300s"
+
+params = ""
