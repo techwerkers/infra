@@ -21,9 +21,9 @@ spec:
         - "sh"
         - "-c"
         - |
-          ./listmonk --install --idempotent --yes --config '' && \
-          ./listmonk --upgrade --yes --config '' && \
-          ./listmonk --config ''
+          ./listmonk --install --idempotent --yes --config /listmonk/config.toml && \
+          ./listmonk --upgrade --yes --config /listmonk/config.toml && \
+          ./listmonk --config /listmonk/config.toml
         envFrom:
         - configMapRef:
             name: listmonk-listmonk-env
@@ -35,11 +35,18 @@ spec:
         volumeMounts:
         - mountPath: /listmonk/uploads
           name: listmonk-data
+        - mountPath: /listmonk/config.toml
+          name: listmonk-config-toml
+          subPath: config.toml
         resources:
           requests:
             memory: 128Mi
           limits:
             memory: 128Mi
+      volumes:
+      - name: listmonk-config-toml
+        configMap:
+          name: listmonk-config-toml
   volumeClaimTemplates:
   - metadata:
       name: listmonk-data

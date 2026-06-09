@@ -26,6 +26,11 @@ resources:
 - service-listmonk.yaml
 - statefulset-listmonk.yaml
 
+configMapGenerator:
+- name: listmonk-config-toml
+  files:
+  - config.toml
+
 generators:
 - |-
   apiVersion: viaduct.ai/v1
