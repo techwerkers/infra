@@ -10,7 +10,6 @@ images:
 - name: zimengxiong/excalidash-backend
   newTag: 0.5.0
 
-
 resources:
 - ns.yaml
 - ../ext/middlewares/

@@ -12,7 +12,7 @@ package_update: true
 package_upgrade: true
 manage_resolv_conf: true
 resolv_conf:
-  nameservers: ['1.1.1.1', '1.0.0.1']
+  nameservers: ["1.1.1.1", "1.0.0.1"]
 write_files:
 - path: /etc/ssh/sshd_config.d/ssh-hardening.conf
   content: |

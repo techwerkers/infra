@@ -4,7 +4,8 @@ This directory contains a collection of containers to help with backing up data.
 
 ## Contaienrs
 
-- `quay.io/b-3-n/postgres-backup` - A container that inherits from `postgres:<v>-alpine` and installs a SSH client for remote backups.
+- `quay.io/b-3-n/postgres-backup` - A container that inherits from `postgres:<v>-alpine` and installs a SSH client for
+  remote backups.
 - `quay.io/b-3-n/file-backup` - A container based on `alpine` with an installed SSH client for remote backups.
 
 ## Building
@@ -67,7 +68,7 @@ podman run \
 Required ENV vars:
 
 - `SSH_HOST`: SSH hostname for the backup destination
-- `FILE_PATH`: The directory to back up 
+- `FILE_PATH`: The directory to back up
 
 Optional ENV vars:
 

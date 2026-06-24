@@ -1,8 +1,7 @@
 # Techwerkers Infra
 
-This whole doc is intended for people with infra knowledge. Doing any
-operations in this doc is likely to require access to keepass. Access is
-generally restricted unless absolutely necessary.
+This whole doc is intended for people with infra knowledge. Doing any operations in this doc is likely to require access
+to keepass. Access is generally restricted unless absolutely necessary.
 
 ## SSH Key
 
@@ -14,8 +13,7 @@ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_techwerkers -C k3s@techwerkers
 
 The above ssh key is available in the keepass.
 
-It is generally recommended to write the `ssh_config` to your ssh config to
-make SSH'ing into the host easier.
+It is generally recommended to write the `ssh_config` to your ssh config to make SSH'ing into the host easier.
 
 ```sh
 cat ssh_config >> ~/.ssh/config
@@ -26,11 +24,10 @@ cat ssh_config >> ~/.ssh/config
 
 ## Hetzner
 
-We are using Hetzner Cloud servers to host some small machines to run
-kubernetes (specifically k3s).
+We are using Hetzner Cloud servers to host some small machines to run kubernetes (specifically k3s).
 
-This is all managed in the `tf` subdirectory. Both `opentofu` and `terraform`
-can be used to manage the infra. See the README in that directory for more info.
+This is all managed in the `tf` subdirectory. Both `opentofu` and `terraform` can be used to manage the infra. See the
+README in that directory for more info.
 
 **Agents:**
 
@@ -70,5 +67,5 @@ hcloud server create \
 
 ## Kubernetes Manifests
 
-A number of kubernetes manifests are provided in the `manifests` directory
-All information in the `manifests` directory. A readme is avaialble there.
+A number of kubernetes manifests are provided in the `manifests` directory All information in the `manifests` directory.
+A readme is avaialble there.

@@ -1,0 +1,23 @@
+{
+  "json": {},
+  "yaml": {
+    "indentBlockSequenceInMap": false
+  },
+  "markdown": {
+    "lineWidth": 120,
+    "textWrap": "always"
+  },
+  "includes": [
+    "**/*.{json,md,yaml}"
+  ],
+  "excludes": [
+    "**/*.enc.yaml",
+    "manifests/bramble/**/*"
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/json-0.22.0.wasm",
+    "https://plugins.dprint.dev/markdown-0.22.1.wasm",
+    "https://plugins.dprint.dev/dockerfile-0.4.1.wasm",
+    "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.6.0.wasm"
+  ]
+}

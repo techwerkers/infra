@@ -15,6 +15,6 @@ spec:
         type: PathPrefix
         value: /
     backendRefs:
-      - name: listmonk-listmonk
-        port: 9000
-        weight: 1
+    - name: listmonk-listmonk
+      port: 9000
+      weight: 1

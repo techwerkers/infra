@@ -26,7 +26,7 @@ The following curl runs do kustomize and ksops.
 ```bash
 curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 curl -s https://raw.githubusercontent.com/viaduct-ai/kustomize-sops/master/scripts/install-ksops-archive.sh | bash
-``` 
+```
 
 > [!NOTE]
 > You need to use the real kustomize, not the one bundled with `kubectl -k`
@@ -58,9 +58,9 @@ kb . | kubectl apply -f -
 
 sops (Secret OPerationS) is used to encrypt the secrets in this repo at rest.
 
-In order to access the encrypted files, you will need to ensure the `age`
-private key is available in a path that [sops understands](https://github.com/getsops/sops?tab=readme-ov-file#encrypting-using-age).
-This generally means ensuring the age key is in `~/.config/sops/age/keys.txt`.
+In order to access the encrypted files, you will need to ensure the `age` private key is available in a path that
+[sops understands](https://github.com/getsops/sops?tab=readme-ov-file#encrypting-using-age). This generally means
+ensuring the age key is in `~/.config/sops/age/keys.txt`.
 
 The age key is available in the keepass.
 

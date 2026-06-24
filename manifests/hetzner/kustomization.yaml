@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
 - cert-manager
 - docmost
+- espocrm
 - excalidash
 - gancio
 - infra

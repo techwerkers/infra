@@ -1,16 +1,15 @@
 # Role based access controls
 
-Keycloak has "Authorization" model for each client, however that requires the client actually
-integrate with keycloak's authorization model specifically. Many applications don't do that, so we
-have included something that helps us a little.
+Keycloak has "Authorization" model for each client, however that requires the client actually integrate with keycloak's
+authorization model specifically. Many applications don't do that, so we have included something that helps us a little.
 
 ## What we have
 
-In the root folder is a `rbac-provider` directory which includes a custom JS  authorization script.
+In the root folder is a `rbac-provider` directory which includes a custom JS authorization script.
 
-Very basically, when included in a keycloak authentication flow, it will ensure the authentiating
-user has the role of `access` to the client the user is trying to authenticate to. If not, the user
-get's a somewhat unhelpful error, but at least it's an error.
+Very basically, when included in a keycloak authentication flow, it will ensure the authentiating user has the role of
+`access` to the client the user is trying to authenticate to. If not, the user get's a somewhat unhelpful error, but at
+least it's an error.
 
 Use `./build-rbac-jar.sh` if you wish to repackage this JS file.
 
@@ -35,9 +34,10 @@ Setup the role
 
 1. `Clients` -> `<your client>` -> `Roles`
 1. `Create Role`
-  - Role name: `access` (only this word, only this casing)
-  - Description: `General role given to those that should have access`
-  - `Save`
+
+- Role name: `access` (only this word, only this casing)
+- Description: `General role given to those that should have access`
+- `Save`
 
 Make sure the correct flow is being used
 

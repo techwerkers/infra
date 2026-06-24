@@ -28,7 +28,7 @@ spec:
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: espocrm
-        image: espocrm/espocrm:latest  # Overridden
+        image: espocrm/espocrm:latest # Overridden
         command:
         - sh
         - -c

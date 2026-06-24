@@ -15,6 +15,6 @@ spec:
         type: PathPrefix
         value: /
     backendRefs:
-      - name: gancio-gancio
-        port: 13120
-        weight: 1
+    - name: gancio-gancio
+      port: 13120
+      weight: 1

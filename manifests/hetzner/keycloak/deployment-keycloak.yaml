@@ -24,7 +24,7 @@ spec:
             fieldRef:
               fieldPath: status.podIP
         - name: KC_CACHE_EMBEDDED_NETWORK_BIND_ADDRESS
-          value: '$(POD_IP)'
+          value: "$(POD_IP)"
         envFrom:
         - configMapRef:
             name: keycloak-env
@@ -44,19 +44,19 @@ spec:
             path: /health/started
             port: 9000
           periodSeconds: 1
-          failureThreshold: 600              
+          failureThreshold: 600
         readinessProbe:
           httpGet:
             path: /health/ready
             port: 9000
           periodSeconds: 10
-          failureThreshold: 3              
+          failureThreshold: 3
         livenessProbe:
           httpGet:
             path: /health/live
             port: 9000
           periodSeconds: 10
-          failureThreshold: 3              
+          failureThreshold: 3
         resources:
           limits:
             memory: 768Mi

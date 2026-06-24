@@ -5,7 +5,7 @@ metadata:
   name: keycloak-https
 spec:
   parentRefs:
-  - group: gateway.networking.k8s.io 
+  - group: gateway.networking.k8s.io
     kind: Gateway
     name: keycloak
     sectionName: websecure

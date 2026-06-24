@@ -35,7 +35,7 @@ spec:
               mountPath: /root/.ssh/id_ed25519
               subPath: id_ed25519
               readOnly: true
-            - name: ssh 
+            - name: ssh
               mountPath: /root/.ssh/known_hosts
               subPath: known_hosts
               readOnly: true
@@ -56,11 +56,11 @@ spec:
               mountPath: /root/.ssh/id_ed25519
               subPath: id_ed25519
               readOnly: true
-            - name: ssh 
+            - name: ssh
               mountPath: /root/.ssh/known_hosts
               subPath: known_hosts
               readOnly: true
-            - name: docmost-data 
+            - name: docmost-data
               mountPath: /data/docmost
               readOnly: true
           restartPolicy: OnFailure

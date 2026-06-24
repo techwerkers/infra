@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: gancio
-        image: cisti/gancio:latest  # Overridden
+        image: cisti/gancio:latest # Overridden
         args:
         - "--config"
         - "/app/config/config.json"

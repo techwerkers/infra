@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: listmonk
-        image: listmonk/listmonk:latest  # Overridden
+        image: listmonk/listmonk:latest # Overridden
         command:
         - "sh"
         - "-c"
