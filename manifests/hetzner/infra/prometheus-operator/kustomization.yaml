@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: kube-system
 
 resources:
-- https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/refs/tags/v0.91.0/bundle.yaml
+- https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/refs/tags/v0.92.0/bundle.yaml

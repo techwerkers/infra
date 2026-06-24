@@ -5,10 +5,10 @@ kind: Kustomization
 namespace: espocrm
 
 images:
-- name: espocrm/espocrm 
-  newTag: 9.3.7-apache
+- name: espocrm/espocrm
+  newTag: 9.3.9-apache
 - name: postgres
-  newTag: 18-alpine 
+  newTag: 18-alpine
 
 resources:
 # Dependencies: infra

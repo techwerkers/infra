@@ -6,7 +6,7 @@ namespace: keycloak
 
 images:
 - name: quay.io/keycloak/keycloak
-  newTag: "26.6.0"
+  newTag: "26.6.3"
 - name: postgres
   newTag: "18.3"
 
@@ -29,7 +29,7 @@ resources:
 configMapGenerator:
 - name: altcha-plugin
   files:
-  - keycloak-altcha-jar-with-dependencies.jar  
+  - keycloak-altcha-jar-with-dependencies.jar
   - keycloak-rbac-provider.jar
 
 generators:

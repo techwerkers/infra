@@ -6,9 +6,9 @@ namespace: n8n
 
 images:
 - name: n8nio/n8n
-  newTag: 2.21.7
+  newTag: 2.27.3
 - name: postgres
-  newTag: 18-alpine 
+  newTag: 18-alpine
 
 resources:
 # Dependencies: infra
