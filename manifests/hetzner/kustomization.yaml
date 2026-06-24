@@ -11,6 +11,5 @@ resources:
 - keycloak
 - listmonk
 - n8n
-- nocodb
 - oauth2-proxy
 - observability
