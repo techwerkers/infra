@@ -31,6 +31,14 @@ resources:
 - service-espocrm-websocket.yaml
 - pvc-espocrm.yaml
 
+configMapGenerator:
+- name: espocrm-customisations
+  files:
+  - clientdefs-lead.json=customisations/clientDefs/lead.json
+  - selectdefs-lead.json=customisations/selectDefs/lead.json
+  - i18n-en_US-lead.json=customisations/i18n/en_US/lead.json
+  - customisations/leads-filters-RequiresReview.php
+
 generators:
 - |-
   apiVersion: viaduct.ai/v1

@@ -35,7 +35,23 @@ spec:
         volumeMounts:
         - name: espocrm-www
           mountPath: /var/www/html
+        - name: espocrm-customisations
+          mountPath: /var/www/html/custom/Espo/Custom/Classes/Select/Lead/PrimaryFilters/RequiresReview.php
+          subPath: leads-filters-RequiresReview.php
+        - name: espocrm-customisations
+          mountPath: /var/www/html/custom/Espo/Custom/Resources/metadata/selectDefs/Lead.json
+          subPath: selectdefs-lead.json
+        - name: espocrm-customisations
+          mountPath: /var/www/html/custom/Espo/Custom/Resources/metadata/clientDefs/Lead.json
+          subPath: clientdefs-lead.json
+        - name: espocrm-customisations
+          mountPath: /var/www/html/custom/Espo/Custom/Resources/i18n/en_US/Lead.json
+          subPath: i18n-en_US-lead.json
       volumes:
       - name: espocrm-www
         persistentVolumeClaim:
           claimName: espocrm-www
+      - name: espocrm-customisations
+        configMap:
+          name: espocrm-customisations
+          defaultMode: 420
