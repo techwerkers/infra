@@ -1,5 +1,8 @@
 # Techwerkers Infra
 
+> [!INFO]
+> This repo is tracked on codeberg at https://codeberg.org/Techwerkers/infra and is mirrored to github.
+
 This whole doc is intended for people with infra knowledge. Doing any operations in this doc is likely to require access
 to keepass. Access is generally restricted unless absolutely necessary.
 
