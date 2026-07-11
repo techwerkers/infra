@@ -1,0 +1,20 @@
+{
+    "fields": {
+        "cPeopleManager": "PeopleManager",
+        "cWebsiteOrSocials": "Website or Socials",
+        "cGoals": "Goals",
+        "cDuplicateLeads": "Duplicate Leads",
+        "cDuplicateOf": "Duplicate Of",
+        "cTesting": "Testing"
+    },
+    "tooltips": {
+        "cPeopleManager": "Whether the person has hiring/firing power over other workers"
+    },
+    "links": {
+        "cDuplicateLeads": "Duplicate Leads",
+        "cDuplicateOf": "Duplicate Of"
+    },
+    "presetFilters": {
+        "requiresReview": "Requires Review"
+    }
+}
