@@ -1,5 +1,0 @@
-{
-    "primaryFilterClassNameMap": {
-        "requiresReview": "Espo\\Custom\\Classes\\Select\\Lead\\PrimaryFilters\\RequiresReview"
-    }
-}

@@ -1,0 +1,23 @@
+{
+    "relationshipPanels": {
+        "email": {
+            "layout": null,
+            "selectPrimaryFilterName": null
+        },
+        "duplicateLeads": {
+            "layout": null,
+            "selectPrimaryFilterName": null
+        },
+        "duplicateOf": {
+            "layout": null,
+            "selectPrimaryFilterName": null
+        }
+    },
+    "kanbanViewMode": true,
+    "color": "#8bcf78",
+    "iconClass": "fas fa-leaf",
+    "filterList": [
+        "__APPEND__",
+        "requiresReview"
+    ]
+}
