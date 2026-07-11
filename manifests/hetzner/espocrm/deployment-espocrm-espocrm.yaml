@@ -16,6 +16,28 @@ spec:
       labels:
         app: espocrm-espocrm
     spec:
+      initContainers:
+      - name: cp-customizations
+        image: busybox
+        command:
+        - sh
+        - -c
+        - |
+          echo "[INFO] Extracting customizations.tar.gz"
+          tar -xvzf /tmp/customizations.tar.gz -C /tmp/
+          ls -lahR /tmp/customizations
+          cat /tmp/customizations/custom/Espo/Custom/Resources/selectDefs/*.json
+          echo "[INFO] Copying customizations/custom"
+          cp -Rv /tmp/customizations/custom /var/www/html
+          echo "[INFO] Ensuring ownership to www-data for /var/www/html/custom"
+          chown -R www-data:www-data /var/www/html/custom
+          echo "[INFO] Done"
+        volumeMounts:
+        - name: espocrm-www
+          mountPath: /var/www/html
+        - name: espocrm-customisations
+          mountPath: /tmp/customizations.tar.gz
+          subPath: customizations.tar.gz
       containers:
       - name: espocrm
         image: espocrm/espocrm:latest # Overridden
@@ -35,18 +57,6 @@ spec:
         volumeMounts:
         - name: espocrm-www
           mountPath: /var/www/html
-        - name: espocrm-customisations
-          mountPath: /var/www/html/custom/Espo/Custom/Classes/Select/Lead/PrimaryFilters/RequiresReview.php
-          subPath: leads-filters-RequiresReview.php
-        - name: espocrm-customisations
-          mountPath: /var/www/html/custom/Espo/Custom/Resources/metadata/selectDefs/Lead.json
-          subPath: selectdefs-lead.json
-        - name: espocrm-customisations
-          mountPath: /var/www/html/custom/Espo/Custom/Resources/metadata/clientDefs/Lead.json
-          subPath: clientdefs-lead.json
-        - name: espocrm-customisations
-          mountPath: /var/www/html/custom/Espo/Custom/Resources/i18n/en_US/Lead.json
-          subPath: i18n-en_US-lead.json
       volumes:
       - name: espocrm-www
         persistentVolumeClaim:
