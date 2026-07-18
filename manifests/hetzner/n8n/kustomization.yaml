@@ -15,6 +15,7 @@ resources:
 - gateway.yaml
 - httproute.yaml
 - certificate.yaml
+- middleware-req-headers.yaml
 # Dependencies: postgres
 - configmap-postgres.yaml
 - statefulset-postgres.yaml
