@@ -13,7 +13,6 @@ resource "hcloud_server" "k3s-server-01" {
   image = "debian-13"
 
   server_type = "cx23"
-  datacenter  = "nbg1-dc3"
   backups     = true
   keep_disk   = true
 
@@ -52,8 +51,7 @@ resource "hcloud_server" "k3s-agent-01" {
 
   image = "debian-13"
 
-  server_type = "cx23"
-  datacenter  = "nbg1-dc3"
+  server_type = "cx33"
   backups     = true
   keep_disk   = true
 

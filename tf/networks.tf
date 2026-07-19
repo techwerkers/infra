@@ -12,7 +12,6 @@ resource "hcloud_network_subnet" "eu_central-vms" {
 
 resource "hcloud_primary_ip" "ipv4_k3s" {
   name              = "techwerkers-k8s-v4"
-  datacenter        = "nbg1-dc3"
   type              = "ipv4"
   assignee_type     = "server"
   delete_protection = true
@@ -21,7 +20,6 @@ resource "hcloud_primary_ip" "ipv4_k3s" {
 
 resource "hcloud_primary_ip" "ipv6_k3s" {
   name              = "techwerkers-k8s-v6"
-  datacenter        = "nbg1-dc3"
   type              = "ipv6"
   assignee_type     = "server"
   delete_protection = true
