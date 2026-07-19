@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discourse-valkey
+  labels:
+    app: discourse-valkey
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discourse-valkey
+  template:
+    metadata:
+      labels:
+        app: discourse-valkey
+    spec:
+      containers:
+      - name: valkey
+        image: valkey/valkey:REPLACEME
+        ports:
+        - containerPort: 6379
+          name: valkey
+        resources:
+          requests:
+            memory: 32Mi
+          limits:
+            memory: 32Mi

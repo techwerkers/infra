@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: discourse-backup
+data:
+  # For file-backup
+  FILE_PATH: /shared/backups
+  # Destination SSH server details
+  SSH_HOST: u499668-sub5.your-storagebox.de
+  SSH_USER: u499668-sub5
+  SSH_PORT: "23"
+  SSH_KEY_PATH: /root/.ssh/id_ed25519
+  DEBUG: "1"
+  RSNAPSHOT_SYNC_FIRST: "1"

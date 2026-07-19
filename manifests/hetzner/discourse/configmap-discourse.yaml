@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: discourse-discourse
+data:
+  DISCOURSE_HOSTNAME: "community.techwerkers.nl"
+  DISCOURSE_FORCE_HTTPS: "true"
+  # Email
+  DISCOURSE_DEVELOPER_EMAILS: community@techwerkers.nl
+  DISCOURSE_SMTP_ADDRESS: disroot.org
+  DISCOURSE_SMTP_PORT: "587"
+  #DISCOURSE_SMTP_ENABLE_START_TLS: "false"
+  DISCOURSE_SMTP_USERNAME: techwerkers
+  # DB
+  DISCOURSE_DB_HOST: "discourse-postgres.discourse.svc"
+  DISCOURSE_DB_PORT: "5432"
+  DISCOURSE_DB_NAME: discourse
+  DISCOURSE_DB_USERNAME: discourse
+  # Cache
+  DISCOURSE_REDIS_HOST: "discourse-valkey.discourse.svc"
+  DISCOURSE_REDIS_PORT: "6379"

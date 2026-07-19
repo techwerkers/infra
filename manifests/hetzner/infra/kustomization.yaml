@@ -11,3 +11,5 @@ resources:
 - prometheus-operator/
 - podmonitor-traefik.yaml
 - servicemonitor-coredns.yaml
+- node-k3s-server-01.yaml
+- node-k3s-agent-01.yaml

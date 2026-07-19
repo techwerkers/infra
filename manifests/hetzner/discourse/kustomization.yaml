@@ -1,0 +1,51 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: discourse
+
+images:
+- name: discourse/discourse
+  newTag: 2026.7.0-latest
+- name: valkey/valkey
+  newTag: 9.1.0
+- name: discourse/postgres
+  newTag: pg18
+- name: quay.io/b-3-n/file-backup
+  newTag: 0.2-alpine
+
+resources:
+- ns.yaml
+# Gateway, routes, tls
+- certificate-discourse.yaml
+- gateway.yaml
+- httproute.yaml
+# Dependencies (Postgres, valkey)
+- configmap-postgres.yaml
+- deployment-valkey.yaml
+- service-postgres.yaml
+- service-valkey.yaml
+- statefulset-postgres.yaml
+# Discourse core
+- configmap-discourse.yaml
+- service-discourse.yaml
+- statefulset-discourse.yaml
+# Backups
+- configmap-backup.yaml
+- cronjob-backup.yaml
+- cronjob-backup-weekly.yaml
+
+generators:
+- |-
+  apiVersion: viaduct.ai/v1
+  kind: ksops
+  metadata:
+    name: discourse-ksops
+    annotations:
+      config.kubernetes.io/function: |
+        exec:
+          path: ksops
+  files:
+  - ./secret-postgres.enc.yaml
+  - ./secret-discourse.enc.yaml
+  - ./secret-backup.enc.yaml
