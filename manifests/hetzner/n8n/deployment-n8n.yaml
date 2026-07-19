@@ -35,7 +35,7 @@ spec:
           limits:
             memory: 768Mi
           requests:
-            memory: 768Mi
+            memory: 512Mi
         volumeMounts:
         - name: n8n-data
           mountPath: /home/node/.n8n

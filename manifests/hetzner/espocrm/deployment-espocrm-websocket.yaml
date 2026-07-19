@@ -43,9 +43,9 @@ spec:
           containerPort: 80
         resources:
           limits:
-            memory: 128Mi
+            memory: 64Mi
           requests:
-            memory: 128Mi
+            memory: 32Mi
         volumeMounts:
         - name: espocrm-www
           mountPath: /var/www/html
