@@ -1,0 +1,53 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: discourse-backup
+spec:
+  schedule: "0 3 * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: discourse-backup
+        spec:
+          containers:
+          - name: data-backup
+            image: quay.io/b-3-n/file-backup:latest # PATCHME
+            imagePullPolicy: IfNotPresent
+            command: ["file-backup.sh", "daily"]
+            env:
+            - name: SSH_REMOTE_DIR
+              value: snapshot_data
+            envFrom:
+            - configMapRef:
+                name: discourse-backup
+            securityContext:
+              privileged: true
+            volumeMounts:
+            - name: ssh
+              mountPath: /root/.ssh/id_ed25519
+              subPath: id_ed25519
+              readOnly: true
+            - name: ssh
+              mountPath: /root/.ssh/known_hosts
+              subPath: known_hosts
+              readOnly: true
+            - name: discourse-data
+              mountPath: /shared
+              readOnly: true
+          restartPolicy: OnFailure
+          volumes:
+          - name: ssh
+            secret:
+              secretName: discourse-backup
+              defaultMode: 384
+              items:
+              - key: id_ed25519
+                path: id_ed25519
+              - key: SSH_KNOWN_HOSTS
+                path: known_hosts
+          - name: discourse-data
+            persistentVolumeClaim:
+              claimName: discourse-data-discourse-discourse-0

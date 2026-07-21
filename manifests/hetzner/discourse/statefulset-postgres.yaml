@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: discourse-postgres
+spec:
+  selector:
+    matchLabels:
+      app: discourse-postgres
+  serviceName: discourse-postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: discourse-postgres
+    spec:
+      containers:
+      - name: postgres
+        image: discourse/postgres:REPLACEME
+        envFrom:
+        - configMapRef:
+            name: discourse-postgres
+        - secretRef:
+            name: discourse-postgres
+        ports:
+        - containerPort: 5432
+          name: pgport
+        volumeMounts:
+        - mountPath: /var/lib/postgresql
+          name: postgres-data
+        resources:
+          requests:
+            memory: 512Mi
+          limits:
+            memory: 512Mi
+      nodeSelector:
+        techwerkers.nl/node-type: agent
+  volumeClaimTemplates:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: postgres-data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: local-path
+      resources:
+        requests:
+          storage: 10Gi

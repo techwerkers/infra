@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: discourse-discourse
+spec:
+  selector:
+    matchLabels:
+      app: discourse-discourse
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: discourse-discourse
+    spec:
+      containers:
+      - name: discourse
+        image: discourse/discourse:REPLACEME
+        envFrom:
+        - configMapRef:
+            name: discourse-discourse
+        - secretRef:
+            name: discourse-discourse
+        ports:
+        - containerPort: 80
+          name: http
+        volumeMounts:
+        - mountPath: /shared
+          name: discourse-data
+        resources:
+          requests:
+            memory: 2048Mi
+          limits:
+            memory: 3072Mi
+      nodeSelector:
+        techwerkers.nl/node-type: agent
+  volumeClaimTemplates:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: discourse-data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: local-path
+      resources:
+        requests:
+          storage: 10Gi
