@@ -9,8 +9,8 @@ data:
   DISCOURSE_DEVELOPER_EMAILS: community@techwerkers.nl
   DISCOURSE_SMTP_ADDRESS: disroot.org
   DISCOURSE_SMTP_PORT: "587"
-  #DISCOURSE_SMTP_ENABLE_START_TLS: "false"
-  DISCOURSE_SMTP_USERNAME: techwerkers
+  DISCOURSE_SMTP_ENABLE_START_TLS: "true"
+  DISCOURSE_SMTP_USER_NAME: techwerkers
   # DB
   DISCOURSE_DB_HOST: "discourse-postgres.discourse.svc"
   DISCOURSE_DB_PORT: "5432"
